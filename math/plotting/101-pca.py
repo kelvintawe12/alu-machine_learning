@@ -3,9 +3,10 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
 
-lib = np.load("pca.npz")
-data = lib["data"]
-labels = lib["labels"]
+
+# Load data and labels from .npy files in the math directory
+data = np.load("math/data.npy")
+labels = np.load("math/labels.npy")
 
 data_means = np.mean(data, axis=0)
 norm_data = data - data_means
