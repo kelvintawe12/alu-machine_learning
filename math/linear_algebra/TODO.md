@@ -15,3 +15,6 @@
 - [x] 12. Bracing The Elements (12-bracin_the_elements.py)
 - [x] 13. Cat's Got Your Tongue (13-cats_got_your_tongue.py)
 - [x] 14. Saddle Up (14-saddle_up.py)
+- [x] 100. Slice Like a Ninja (100-slice_like_a_ninja.py)
+- [x] 101. The Whole Barn (101-the_whole_barn.py)
+- [x] 102. Squashed Like Sardines (102-squashed_like_sardines.py)
