@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Module for matrix multiplication using numpy.
+"""
 
 import numpy as np
 
