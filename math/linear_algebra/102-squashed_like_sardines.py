@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for matrix concatenation functions.
+This module provides functions for concatenating matrices along specified axes.
 """
 
 
@@ -43,6 +43,8 @@ def cat_matrices(mat1, mat2, axis=0):
                 return None
             if len(m1) != len(m2):
                 return None
-            return [concat_recursive(a, b, axis, current_axis + 1) for a, b in zip(m1, m2)]
+            result = [concat_recursive(a, b, axis, current_axis + 1)
+                      for a, b in zip(m1, m2)]
+            return result
 
     return concat_recursive(mat1, mat2, axis)
