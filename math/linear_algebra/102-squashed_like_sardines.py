@@ -43,8 +43,9 @@ def cat_matrices(mat1, mat2, axis=0):
                 return None
             if len(m1) != len(m2):
                 return None
-            result = [concat_recursive(a, b, axis, current_axis + 1)
-                      for a, b in zip(m1, m2)]
+            result = []
+            for a, b in zip(m1, m2):
+                result.append(concat_recursive(a, b, axis, current_axis + 1))
             return result
 
     return concat_recursive(mat1, mat2, axis)
