@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+"""
+This module provides functions for matrix operations in linear algebra.
+"""
+
+
 def add_matrices(mat1, mat2):
     """
     Adds two matrices element-wise.
