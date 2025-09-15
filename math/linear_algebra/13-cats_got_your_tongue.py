@@ -2,6 +2,11 @@
 
 import numpy as np
 
+"""
+Module for matrix concatenation functions.
+"""
+
+
 def np_cat(mat1, mat2, axis=0):
     """
     Concatenates two matrices along a specific axis.
