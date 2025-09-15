@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Module for advanced numpy array slicing operations.
+"""
+
 
 def np_slice(matrix, axes={}):
     """
@@ -6,7 +10,7 @@ def np_slice(matrix, axes={}):
 
     Args:
         matrix: A numpy.ndarray.
-        axes: A dictionary where keys are axes and values are tuples for slicing.
+        axes: A dict where keys are axes and values are tuples for slicing.
 
     Returns:
         A new numpy.ndarray sliced according to axes.
