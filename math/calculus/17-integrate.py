@@ -13,7 +13,8 @@ def poly_integral(poly, C=0):
         C (int): Integration constant
 
     Returns:
-        list: New list of coefficients representing the integral, or None if invalid
+        list: New list of coefficients representing the integral, 
+              or None if invalid
     """
     if not isinstance(poly, list) or len(poly) == 0:
         return None
