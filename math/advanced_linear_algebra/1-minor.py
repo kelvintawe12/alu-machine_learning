@@ -44,8 +44,8 @@ def minor(matrix):
     except Exception:
         # Fallback: try to import directly
         try:
-            from . import determinant
-            determinant_func = determinant.determinant
+            from .determinant import determinant
+            determinant_func = determinant
         except ImportError:
             raise ImportError("Could not import determinant function")
 
