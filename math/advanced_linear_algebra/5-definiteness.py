@@ -30,6 +30,10 @@ def definiteness(matrix):
     if len(matrix.shape) != 2 or matrix.shape[0] != matrix.shape[1]:
         return None
 
+    # Check for valid dimensions (not 0x0)
+    if matrix.shape[0] == 0:
+        return None
+
     # Check if matrix contains only finite numbers
     if not np.all(np.isfinite(matrix)):
         return None
@@ -43,6 +47,13 @@ def definiteness(matrix):
         eigenvals = np.linalg.eigvals(matrix)
     except np.linalg.LinAlgError:
         return None
+
+    # Check if eigenvalues are real (should be for symmetric matrices)
+    if not np.all(np.isreal(eigenvals)):
+        return None
+
+    # Convert to real values
+    eigenvals = np.real(eigenvals)
 
     # Use a small tolerance for zero comparison
     tol = 1e-8
