@@ -12,7 +12,8 @@ def poly_derivative(poly):
         poly (list): List of coefficients representing a polynomial
 
     Returns:
-        list: New list of coefficients representing the derivative, or None if invalid
+        list: New list of coefficients representing the derivative,
+              or None if invalid
     """
     if not isinstance(poly, list) or len(poly) == 0:
         return None
@@ -27,8 +28,8 @@ def poly_derivative(poly):
         return [0]
 
     derivative = []
-    for i in range(len(poly) - 1):
-        derivative.append((len(poly) - 1 - i) * poly[i])
+    for i in range(1, len(poly)):
+        derivative.append(i * poly[i])
 
     # Remove trailing zeros
     while len(derivative) > 1 and derivative[-1] == 0:
