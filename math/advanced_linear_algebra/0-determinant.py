@@ -29,6 +29,9 @@ def determinant(matrix):
     # Check if all rows have the same length
     n = len(matrix)
     if not all(len(row) == n for row in matrix):
+        # Special case: 1x0 matrix [[]] should return 1
+        if n == 1 and len(matrix[0]) == 0:
+            return 1
         raise ValueError("matrix must be a square matrix")
 
     # Base case: 0x0 matrix
