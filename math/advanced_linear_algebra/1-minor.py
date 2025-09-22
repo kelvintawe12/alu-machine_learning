@@ -32,7 +32,7 @@ def minor(matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
     # Import determinant function from the same package
-    import determinant
+    from . import determinant
 
     # Calculate minor matrix
     minor_matrix = []
