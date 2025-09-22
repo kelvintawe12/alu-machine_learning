@@ -4,6 +4,75 @@ Module for calculating the cofactor matrix of a matrix
 """
 
 
+def determinant(matrix):
+    """
+    Calculate the determinant of a matrix (helper function).
+    """
+    n = len(matrix)
+
+    # Base case: 0x0 matrix
+    if n == 0:
+        return 1
+
+    # Base case: 1x1 matrix
+    if n == 1:
+        return matrix[0][0]
+
+    # Base case: 2x2 matrix
+    if n == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+    # Recursive case: n x n matrix (n > 2)
+    det = 0
+    for j in range(n):
+        # Create submatrix by removing first row and j-th column
+        submatrix = []
+        for i in range(1, n):
+            row = []
+            for k in range(n):
+                if k != j:
+                    row.append(matrix[i][k])
+            submatrix.append(row)
+
+        # Calculate cofactor: (-1)^(0+j) * det(submatrix)
+        cofactor_val = (-1) ** j * determinant(submatrix)
+        det += matrix[0][j] * cofactor_val
+
+    return det
+
+
+def minor(matrix):
+    """
+    Calculate the minor matrix of a matrix (helper function).
+    """
+    n = len(matrix)
+
+    # Special case: 1x1 matrix
+    if n == 1:
+        return [[1]]
+
+    # Calculate minor matrix
+    minor_matrix = []
+    for i in range(n):
+        row = []
+        for j in range(n):
+            # Create submatrix by removing i-th row and j-th column
+            submatrix = []
+            for x in range(n):
+                if x != i:
+                    sub_row = []
+                    for y in range(n):
+                        if y != j:
+                            sub_row.append(matrix[x][y])
+                    submatrix.append(sub_row)
+
+            # Calculate minor as determinant of submatrix
+            row.append(determinant(submatrix))
+        minor_matrix.append(row)
+
+    return minor_matrix
+
+
 def cofactor(matrix):
     """
     Calculate the cofactor matrix of a matrix.
@@ -19,7 +88,8 @@ def cofactor(matrix):
         ValueError: If matrix is not square or is empty
     """
     # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if (not isinstance(matrix, list) or
+            not all(isinstance(row, list) for row in matrix)):
         raise TypeError("matrix must be a list of lists")
 
     # Check if matrix is empty
@@ -31,18 +101,16 @@ def cofactor(matrix):
     if not all(len(row) == n for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
-    # Import minor function from the same package
-    import minor
+    # Get the minor matrix
+    minor_matrix = minor(matrix)
 
-    # Calculate cofactor matrix
+    # Calculate cofactor matrix by applying sign pattern
     cofactor_matrix = []
     for i in range(n):
         row = []
         for j in range(n):
-            # Get minor value
-            minor_val = minor.minor(matrix)[i][j]
             # Apply cofactor sign: (-1)^(i+j)
-            cofactor_val = (-1) ** (i + j) * minor_val
+            cofactor_val = (-1) ** (i + j) * minor_matrix[i][j]
             row.append(cofactor_val)
         cofactor_matrix.append(row)
 
