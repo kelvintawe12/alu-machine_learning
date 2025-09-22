@@ -2,6 +2,8 @@
 """
 Module for calculating the minor matrix of a matrix
 """
+import importlib.util
+import os
 
 
 def minor(matrix):
@@ -32,7 +34,20 @@ def minor(matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
     # Import determinant function from the same package
-    from . import determinant
+    try:
+        # Try to import as a module from the current directory
+        current_dir = os.path.dirname(__file__)
+        spec = importlib.util.spec_from_file_location("determinant", os.path.join(current_dir, "0-determinant.py"))
+        determinant_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(determinant_module)
+        determinant_func = determinant_module.determinant
+    except Exception:
+        # Fallback: try to import directly
+        try:
+            from . import determinant
+            determinant_func = determinant.determinant
+        except ImportError:
+            raise ImportError("Could not import determinant function")
 
     # Calculate minor matrix
     minor_matrix = []
@@ -50,7 +65,7 @@ def minor(matrix):
                     submatrix.append(sub_row)
 
             # Calculate minor as determinant of submatrix
-            row.append(determinant.determinant(submatrix))
+            row.append(determinant_func(submatrix))
         minor_matrix.append(row)
 
     return minor_matrix
