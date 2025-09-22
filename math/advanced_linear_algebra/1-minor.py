@@ -2,8 +2,43 @@
 """
 Module for calculating the minor matrix of a matrix
 """
-import importlib.util
-import os
+
+
+def determinant(matrix):
+    """
+    Calculate the determinant of a matrix (helper function).
+    """
+    n = len(matrix)
+    
+    # Base case: 0x0 matrix
+    if n == 0:
+        return 1
+    
+    # Base case: 1x1 matrix
+    if n == 1:
+        return matrix[0][0]
+    
+    # Base case: 2x2 matrix
+    if n == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    
+    # Recursive case: n x n matrix (n > 2)
+    det = 0
+    for j in range(n):
+        # Create submatrix by removing first row and j-th column
+        submatrix = []
+        for i in range(1, n):
+            row = []
+            for k in range(n):
+                if k != j:
+                    row.append(matrix[i][k])
+            submatrix.append(row)
+        
+        # Calculate cofactor: (-1)^(0+j) * det(submatrix)
+        cofactor = (-1) ** j * determinant(submatrix)
+        det += matrix[0][j] * cofactor
+    
+    return det
 
 
 def minor(matrix):
@@ -21,33 +56,22 @@ def minor(matrix):
         ValueError: If matrix is not square or is empty
     """
     # Check if matrix is a list of lists
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if (not isinstance(matrix, list) or 
+            not all(isinstance(row, list) for row in matrix)):
         raise TypeError("matrix must be a list of lists")
 
     # Check if matrix is empty
     if len(matrix) == 0:
         raise ValueError("matrix must be a non-empty square matrix")
 
-    # Check if all rows have the same length
+    # Check if all rows have the same length (square matrix)
     n = len(matrix)
     if not all(len(row) == n for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
-    # Import determinant function from the same package
-    try:
-        # Try to import as a module from the current directory
-        current_dir = os.path.dirname(__file__)
-        spec = importlib.util.spec_from_file_location("determinant", os.path.join(current_dir, "0-determinant.py"))
-        determinant_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(determinant_module)
-        determinant_func = determinant_module.determinant
-    except Exception:
-        # Fallback: try to import directly
-        try:
-            from .determinant import determinant
-            determinant_func = determinant
-        except ImportError:
-            raise ImportError("Could not import determinant function")
+    # Special case: 1x1 matrix
+    if n == 1:
+        return [[1]]
 
     # Calculate minor matrix
     minor_matrix = []
@@ -65,7 +89,7 @@ def minor(matrix):
                     submatrix.append(sub_row)
 
             # Calculate minor as determinant of submatrix
-            row.append(determinant_func(submatrix))
+            row.append(determinant(submatrix))
         minor_matrix.append(row)
 
     return minor_matrix
