@@ -1,6 +1,6 @@
 # Calculus
 
-This directory contains solutions to various calculus problems covering:
+This directory contains solutions to various calculuss problems covering:
 
 ## Topics Covered
 
