@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Sparse Autoencoder
 This module defines a function to create a sparse autoencoder using Keras.
