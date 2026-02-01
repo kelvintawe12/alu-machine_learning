@@ -1,18 +1,10 @@
 #!/usr/bin/env python3
-import tensorflow.keras as keras
-
 """
 Vanilla Autoencoder
 This module defines a function to create a vanilla autoencoder using Keras.
 """
 
 import tensorflow.keras as keras
-
-def autoencoder(input_dims, hidden_layers, latent_dims):
-    """
-    Vanilla Autoencoder
-    This module defines a function to create a vanilla autoencoder using Keras.
-    """
 
 
 def autoencoder(input_dims, hidden_layers, latent_dims):
@@ -21,12 +13,10 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
     Args:
         input_dims (int): Dimensions of the model input.
-        hidden_layers (list): Number of nodes for each hidden layer in the encoder.
         latent_dims (int): Dimensions of the latent space representation.
 
     Returns:
         encoder: The encoder model.
-        decoder: The decoder model.
         auto: The full autoencoder model.
     """
     # Encoder
@@ -43,7 +33,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     for nodes in reversed(hidden_layers):
         x = keras.layers.Dense(nodes, activation='relu')(x)
     outputs = keras.layers.Dense(
-        input_dims, activation='sigmoid')(x)
+        input_dims,
+        activation='sigmoid'
+    )(x)
     decoder = keras.Model(latent_inputs, outputs)
 
     # Autoencoder
