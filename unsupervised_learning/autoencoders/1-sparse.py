@@ -1,14 +1,10 @@
-#!/usr/bin/env python3
 """
 Sparse Autoencoder
 This module defines a function to create a sparse autoencoder using Keras.
 """
 
-"""
-Sparse Autoencoder
-This module defines a function to create a sparse autoencoder using Keras.
-"""
 import tensorflow.keras as keras
+
 
 def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     """
@@ -42,7 +38,10 @@ def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     x = latent_inputs
     for nodes in reversed(hidden_layers):
         x = keras.layers.Dense(nodes, activation='relu')(x)
-    outputs = keras.layers.Dense(input_dims, activation='sigmoid')(x)
+    outputs = keras.layers.Dense(
+        input_dims,
+        activation='sigmoid'
+    )(x)
     decoder = keras.Model(latent_inputs, outputs)
 
     # Autoencoder
