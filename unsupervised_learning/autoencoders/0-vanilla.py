@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 import tensorflow.keras as keras
 
+"""
+Vanilla Autoencoder
+This module defines a function to create a vanilla autoencoder using Keras.
+"""
+
+import tensorflow.keras as keras
+
 def autoencoder(input_dims, hidden_layers, latent_dims):
     """
     Vanilla Autoencoder
