@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Defines a single neuron performing binary classification (privatized attributes)
+Defines a single neuron performing binary classification
+(privatized attributes)
 """
 import numpy as np
 

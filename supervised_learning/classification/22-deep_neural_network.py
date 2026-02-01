@@ -4,6 +4,7 @@ Deep neural network for binary classification (train method)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (train method)"""
     def __init__(self, nx, layers):

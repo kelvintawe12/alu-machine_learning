@@ -9,6 +9,8 @@ import os
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (save/load methods)"""
     def __init__(self, nx, layers):
+        
+        
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
         if nx < 1:

@@ -4,6 +4,7 @@ Deep neural network for binary classification (evaluate method)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (evaluate method)"""
     def __init__(self, nx, layers):

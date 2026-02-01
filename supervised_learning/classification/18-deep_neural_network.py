@@ -4,6 +4,7 @@ Deep neural network for binary classification (forward propagation)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (forward propagation)"""
     def __init__(self, nx, layers):

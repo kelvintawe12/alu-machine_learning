@@ -6,6 +6,7 @@ import numpy as np
 import pickle
 import os
 
+
 class DeepNeuralNetwork:
     """Deep neural network for multiclass classification (multiclass support)"""
     def __init__(self, nx, layers):

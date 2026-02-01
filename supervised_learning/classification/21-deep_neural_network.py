@@ -4,6 +4,7 @@ Deep neural network for binary classification (gradient descent)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (gradient descent)"""
     def __init__(self, nx, layers):

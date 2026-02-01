@@ -4,6 +4,7 @@ Deep neural network for binary classification (privatized attributes)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (privatized attributes)"""
     def __init__(self, nx, layers):

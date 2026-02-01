@@ -5,6 +5,7 @@ Deep neural network for binary classification (upgraded train: verbose, graph, s
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (upgraded train)"""
     def __init__(self, nx, layers):

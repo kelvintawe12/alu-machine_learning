@@ -4,6 +4,7 @@ Deep neural network for binary classification (cost function)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (cost function)"""
     def __init__(self, nx, layers):

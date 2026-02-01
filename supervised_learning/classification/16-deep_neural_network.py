@@ -4,6 +4,7 @@ Deep neural network for binary classification (He initialization)
 """
 import numpy as np
 
+
 class DeepNeuralNetwork:
     """Deep neural network for binary classification (He initialization)"""
     def __init__(self, nx, layers):
