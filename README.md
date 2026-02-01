@@ -12,6 +12,14 @@ This repository contains machine learning and mathematics projects, exercises, a
   - Accuracy and loss calculation
   - Training operation and full training loop
   - Model saving and evaluation
+- `supervised_learning/optimization/`: Implementations of optimization algorithms for neural networks, including:
+  - Feature Scaling (Normalization)
+  - Mini-batch Gradient Descent
+  - Momentum
+  - RMSProp
+  - Adam
+  - Learning Rate Decay
+  - Batch Normalization
 - `math/`: Datasets and supporting files for experiments.
 
 ## Requirements
@@ -38,3 +46,6 @@ kelvintawe12
 
 ---
 For more details, see the README files in each subdirectory.
+
+---
+For a detailed explanation of the optimization techniques, see the accompanying blog post (link to be added).
