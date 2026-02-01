@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Convolutional Autoencoder
-This module defines a function to create a convolutional autoencoder using Keras.
 """
 
 import tensorflow.keras as keras
@@ -14,11 +13,7 @@ def autoencoder(input_dims, filters, latent_dims):
     Args:
         input_dims (tuple): Dimensions of the model input.
         filters (list): Number of filters for each conv layer in the encoder.
-        latent_dims (tuple): Dimensions of the latent space representation.
-
     Returns:
-        encoder: The encoder model.
-        decoder: The decoder model.
         auto: The full autoencoder model.
     """
     # Encoder
