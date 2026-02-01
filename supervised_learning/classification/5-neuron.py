@@ -4,6 +4,7 @@ Defines a single neuron performing binary classification (with gradient descent)
 """
 import numpy as np
 
+
 class Neuron:
     """Neuron for binary classification with private attributes, forward propagation, cost, evaluate, and gradient descent"""
     def __init__(self, nx):

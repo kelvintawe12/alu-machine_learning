@@ -4,6 +4,7 @@ Defines a single neuron performing binary classification (with forward propagati
 """
 import numpy as np
 
+
 class Neuron:
     """Neuron for binary classification with private attributes and forward propagation"""
     def __init__(self, nx):

@@ -4,6 +4,7 @@ Defines a single neuron performing binary classification (privatized attributes)
 """
 import numpy as np
 
+
 class Neuron:
     """Neuron for binary classification with private attributes"""
     def __init__(self, nx):

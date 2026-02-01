@@ -5,6 +5,7 @@ Defines a single neuron performing binary classification (with verbose, graph, a
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class Neuron:
     """Neuron for binary classification with all required methods including upgraded train"""
     def __init__(self, nx):

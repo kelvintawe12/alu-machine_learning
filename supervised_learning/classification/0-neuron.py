@@ -4,6 +4,7 @@ Defines a single neuron performing binary classification
 """
 import numpy as np
 
+
 class Neuron:
     """Neuron for binary classification"""
     def __init__(self, nx):
