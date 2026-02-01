@@ -6,7 +6,9 @@ import numpy as np
 
 
 class Neuron:
-    """Neuron for binary classification with private attributes, forward propagation, and cost"""
+    """Neuron for binary classification with private attributes,
+    forward propagation, and cost
+    """
     def __init__(self, nx):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")

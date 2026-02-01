@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Deep neural network for multiclass classification (multiclass support)
+Deep neural network for multiclass classification
+(multiclass support)
 """
 import numpy as np
 import pickle
@@ -8,7 +9,9 @@ import os
 
 
 class DeepNeuralNetwork:
-    """Deep neural network for multiclass classification (multiclass support)"""
+    """Deep neural network for multiclass classification
+    (multiclass support)
+    """
     def __init__(self, nx, layers):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")

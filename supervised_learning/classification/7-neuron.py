@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-Defines a single neuron performing binary classification (with verbose, graph, and step in train)
+Defines a single neuron performing binary classification
+(with verbose, graph, and step in train)
 """
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 class Neuron:
-    """Neuron for binary classification with all required methods including upgraded train"""
+    """Neuron for binary classification with all required methods
+    including upgraded train
+    """
     def __init__(self, nx):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")

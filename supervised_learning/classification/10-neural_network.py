@@ -6,7 +6,9 @@ import numpy as np
 
 
 class NeuralNetwork:
-    """Neural network with one hidden layer for binary classification (forward propagation)"""
+    """Neural network with one hidden layer for binary classification
+    (forward propagation)
+    """
     def __init__(self, nx, nodes):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")

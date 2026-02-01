@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
-Defines a single neuron performing binary classification (with gradient descent)
+Defines a single neuron performing binary classification
+(with gradient descent)
 """
 import numpy as np
 
 
 class Neuron:
-    """Neuron for binary classification with private attributes, forward propagation, cost, evaluate, and gradient descent"""
+    """Neuron for binary classification with private attributes,
+    forward propagation, cost, evaluate, and gradient descent
+    """
     def __init__(self, nx):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
