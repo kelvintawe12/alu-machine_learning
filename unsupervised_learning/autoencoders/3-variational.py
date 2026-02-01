@@ -4,7 +4,6 @@ Variational Autoencoder
 This module defines a function to create a variational autoencoder using Keras.
 """
 import tensorflow.keras as keras
-import tensorflow as tf
 
 def sampling(args):
     """
@@ -27,13 +26,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     Args:
         input_dims (int): Dimensions of the model input.
         hidden_layers (list): Number of nodes for each hidden layer in the encoder.
-        latent_dims (int): Dimensions of the latent space representation.
-
     Returns:
         encoder: The encoder model (outputs: latent, mu, log_var).
-        decoder: The decoder model.
-        auto: The full autoencoder model.
-    """
+        decoder: The decoder model.    """
     # Encoder
     inputs = keras.Input(shape=(input_dims,))
     x = inputs
