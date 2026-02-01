@@ -4,6 +4,7 @@ Neural network with one hidden layer (forward propagation)
 """
 import numpy as np
 
+
 class NeuralNetwork:
     """Neural network with one hidden layer for binary classification (forward propagation)"""
     def __init__(self, nx, nodes):

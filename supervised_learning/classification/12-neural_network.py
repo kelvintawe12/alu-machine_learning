@@ -4,6 +4,7 @@ Neural network with one hidden layer (evaluate method)
 """
 import numpy as np
 
+
 class NeuralNetwork:
     """Neural network with one hidden layer for binary classification (evaluate method)"""
     def __init__(self, nx, nodes):

@@ -4,6 +4,7 @@ Neural network with one hidden layer (cost function)
 """
 import numpy as np
 
+
 class NeuralNetwork:
     """Neural network with one hidden layer for binary classification (cost function)"""
     def __init__(self, nx, nodes):

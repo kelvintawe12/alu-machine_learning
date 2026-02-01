@@ -5,6 +5,7 @@ Neural network with one hidden layer (upgraded train: verbose, graph, step)
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class NeuralNetwork:
     """Neural network with one hidden layer for binary classification (upgraded train)"""
     def __init__(self, nx, nodes):

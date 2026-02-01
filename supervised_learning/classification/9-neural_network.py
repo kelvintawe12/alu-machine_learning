@@ -4,6 +4,7 @@ Defines a neural network with one hidden layer performing binary classification 
 """
 import numpy as np
 
+
 class NeuralNetwork:
     """Neural network with one hidden layer for binary classification (private attributes)"""
     def __init__(self, nx, nodes):

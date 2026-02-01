@@ -4,6 +4,7 @@ Neural network with one hidden layer (gradient descent)
 """
 import numpy as np
 
+
 class NeuralNetwork:
     """Neural network with one hidden layer for binary classification (gradient descent)"""
     def __init__(self, nx, nodes):
