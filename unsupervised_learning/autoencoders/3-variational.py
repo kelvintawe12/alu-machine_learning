@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Variational Autoencoder
-This module defines a function to create a variational autoencoder using Keras.
 """
 
 import tensorflow.keras as keras
@@ -12,8 +11,6 @@ def sampling(args):
     """
     Reparameterization trick by sampling from an isotropic unit Gaussian.
     Args:
-        args: (mu, log_var)
-    Returns:
         z: sampled latent vector
     """
     mu, log_var = args
@@ -31,9 +28,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     Args:
         input_dims (int): Dimensions of the model input.
         hidden_layers (list): Number of nodes for each hidden layer in the encoder.
-    Returns:
-        encoder: The encoder model (outputs: latent, mu, log_var).
-        decoder: The decoder model.
     """
     # Encoder
     inputs = keras.Input(shape=(input_dims,))
