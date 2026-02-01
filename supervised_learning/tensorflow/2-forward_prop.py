@@ -9,8 +9,10 @@ create_layer = __import__('1-create_layer').create_layer
 def forward_prop(x, layer_sizes=[], activations=[]):
     """
     Creates the forward propagation graph for the neural network
+
     Args:
         x: placeholder for the input data
+
         layer_sizes (list): number of nodes in each layer
         activations (list): activation functions for each layer
     Returns:

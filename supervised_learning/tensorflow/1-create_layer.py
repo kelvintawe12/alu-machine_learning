@@ -5,6 +5,9 @@ Creates a layer for a neural network using TensorFlow 1.x
 import tensorflow as tf
 
 def create_layer(prev, n, activation):
+
+
+
     """
     Creates a layer for the neural network
     Args:

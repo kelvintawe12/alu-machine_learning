@@ -4,6 +4,7 @@ Creates the training operation for a neural network in TensorFlow 1.x
 """
 import tensorflow as tf
 
+
 def create_train_op(loss, alpha):
     """
     Creates the training operation for the network

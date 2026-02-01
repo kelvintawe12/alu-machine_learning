@@ -5,6 +5,8 @@ Creates placeholders for input data and labels for a neural network in TensorFlo
 import tensorflow as tf
 
 def create_placeholders(nx, classes):
+    
+    
     """
     Returns two placeholders, x and y, for the neural network
     Args:

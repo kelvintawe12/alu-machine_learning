@@ -5,6 +5,8 @@ Calculates the accuracy of a prediction in TensorFlow 1.x
 import tensorflow as tf
 
 def calculate_accuracy(y, y_pred):
+    
+    
     """
     Calculates the accuracy of a prediction
     Args:
