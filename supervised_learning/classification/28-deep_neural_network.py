@@ -8,7 +8,9 @@ import os
 
 
 class DeepNeuralNetwork:
-    """Deep neural network for multiclass classification (activation function support)"""
+    """Deep neural network for multiclass classification
+    (activation function support)
+    """
     def __init__(self, nx, layers, activation='sig'):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
@@ -24,13 +26,13 @@ class DeepNeuralNetwork:
         self.__cache = {}
         self.__weights = {}
         self.__activation = activation
-        for l in range(1, self.__L + 1):
-            layer_size = layers[l - 1]
-            prev_size = nx if l == 1 else layers[l - 2]
-            self.__weights['W' + str(l)] = (
+        for layer_idx in range(1, self.__L + 1):
+            layer_size = layers[layer_idx - 1]
+            prev_size = nx if layer_idx == 1 else layers[layer_idx - 2]
+            self.__weights['W' + str(layer_idx)] = (
                 np.random.randn(layer_size, prev_size) * np.sqrt(2 / prev_size)
             )
-            self.__weights['b' + str(l)] = np.zeros((layer_size, 1))
+            self.__weights['b' + str(layer_idx)] = np.zeros((layer_size, 1))
 
     @property
     def L(self):
@@ -56,20 +58,20 @@ class DeepNeuralNetwork:
             tuple: Activated output (A, cache)
         """
         self.__cache['A0'] = X
-        for l in range(1, self.__L + 1):
-            Wl = self.__weights['W' + str(l)]
-            bl = self.__weights['b' + str(l)]
-            Al_prev = self.__cache['A' + str(l - 1)]
-            Zl = np.matmul(Wl, Al_prev) + bl
-            if l == self.__L:
+        for layer_idx in range(1, self.__L + 1):
+            W = self.__weights['W' + str(layer_idx)]
+            b = self.__weights['b' + str(layer_idx)]
+            A_prev = self.__cache['A' + str(layer_idx - 1)]
+            Z = np.matmul(W, A_prev) + b
+            if layer_idx == self.__L:
                 # Output layer: softmax for multiclass
-                t = np.exp(Zl - np.max(Zl, axis=0, keepdims=True))
-                self.__cache['A' + str(l)] = t / np.sum(t, axis=0, keepdims=True)
+                t = np.exp(Z - np.max(Z, axis=0, keepdims=True))
+                self.__cache['A' + str(layer_idx)] = t / np.sum(t, axis=0, keepdims=True)
             else:
                 if self.__activation == 'sig':
-                    self.__cache['A' + str(l)] = 1 / (1 + np.exp(-Zl))
+                    self.__cache['A' + str(layer_idx)] = 1 / (1 + np.exp(-Z))
                 else:
-                    self.__cache['A' + str(l)] = np.tanh(Zl)
+                    self.__cache['A' + str(layer_idx)] = np.tanh(Z)
         return self.__cache['A' + str(self.__L)], self.__cache
 
     def cost(self, Y, A):
@@ -90,15 +92,15 @@ class DeepNeuralNetwork:
         weights = self.__weights.copy()
         A_last = cache['A' + str(L)]
         dZ = A_last - Y
-        for l in reversed(range(1, L + 1)):
-            A_prev = cache['A' + str(l - 1)]
-            Wl = weights['W' + str(l)]
+        for layer_idx in reversed(range(1, L + 1)):
+            A_prev = cache['A' + str(layer_idx - 1)]
+            W = weights['W' + str(layer_idx)]
             dW = np.matmul(dZ, A_prev.T) / m
             db = np.sum(dZ, axis=1, keepdims=True) / m
-            self.__weights['W' + str(l)] = self.__weights['W' + str(l)] - alpha * dW
-            self.__weights['b' + str(l)] = self.__weights['b' + str(l)] - alpha * db
-            if l > 1:
-                dA_prev = np.matmul(Wl.T, dZ)
+            self.__weights['W' + str(layer_idx)] = self.__weights['W' + str(layer_idx)] - alpha * dW
+            self.__weights['b' + str(layer_idx)] = self.__weights['b' + str(layer_idx)] - alpha * db
+            if layer_idx > 1:
+                dA_prev = np.matmul(W.T, dZ)
                 if self.__activation == 'sig':
                     dZ = dA_prev * (A_prev * (1 - A_prev))
                 else:
@@ -125,7 +127,7 @@ class DeepNeuralNetwork:
             if i % step == 0 or i == iterations:
                 c = self.cost(Y, A)
                 if verbose:
-                    print(f"Cost after {i} iterations: {c}")
+                    print("Cost after {} iterations: {}".format(i, c))
                 if graph:
                     costs.append(c)
                     steps.append(i)
