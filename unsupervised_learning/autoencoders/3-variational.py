@@ -4,7 +4,6 @@ Variational Autoencoder
 This module defines a function to create a variational autoencoder using Keras.
 """
 
-
 import tensorflow.keras as keras
 
 
