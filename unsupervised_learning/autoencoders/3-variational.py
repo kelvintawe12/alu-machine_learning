@@ -3,7 +3,12 @@
 Variational Autoencoder
 This module defines a function to create a variational autoencoder using Keras.
 """
+
+
+import tensorflow as tf
 import tensorflow.keras as keras
+
+
 
 def sampling(args):
     """
@@ -19,6 +24,8 @@ def sampling(args):
     epsilon = tf.keras.backend.random_normal(shape=(batch, dim))
     return mu + tf.exp(0.5 * log_var) * epsilon
 
+
+
 def autoencoder(input_dims, hidden_layers, latent_dims):
     """
     Creates a variational autoencoder.
@@ -28,7 +35,8 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
         hidden_layers (list): Number of nodes for each hidden layer in the encoder.
     Returns:
         encoder: The encoder model (outputs: latent, mu, log_var).
-        decoder: The decoder model.    """
+        decoder: The decoder model.
+    """
     # Encoder
     inputs = keras.Input(shape=(input_dims,))
     x = inputs
@@ -53,7 +61,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
         reconstruction_loss *= input_dims
         kl_loss = 1 + log_var - tf.square(mu) - tf.exp(log_var)
         kl_loss = -0.5 * tf.reduce_sum(kl_loss, axis=-1)
-        return tf.reduce_mean(reconstruction_loss + kl_loss)
+        return tf.reduce_mean(
+            reconstruction_loss + kl_loss
+        )
 
     # Autoencoder
     auto_inputs = inputs
