@@ -4,6 +4,7 @@ Evaluates the output of a neural network in TensorFlow 1.x
 """
 import tensorflow as tf
 
+
 def evaluate(X, Y, save_path):
     """
     Evaluates the output of a neural network
