@@ -50,6 +50,12 @@ class NeuralNetwork:
         return self.__A2
 
     def forward_prop(self, X):
+        """Calculates the forward propagation of the neural network
+        Args:
+            X (np.ndarray): Input data of shape (nx, m)
+        Returns:
+            tuple: Activated output (A1, A2), cache
+        """
         """Calculates the forward propagation of the neural network"""
         Z1 = np.matmul(self.__W1, X) + self.__b1
         self.__A1 = 1 / (1 + np.exp(-Z1))

@@ -43,6 +43,12 @@ class DeepNeuralNetwork:
         return self.__weights
 
     def forward_prop(self, X):
+        """Calculates the forward propagation of the deep neural network
+        Args:
+            X (np.ndarray): Input data of shape (nx, m)
+        Returns:
+            tuple: Activated output (A, cache)
+        """
         self.__cache['A0'] = X
         for l in range(1, self.__L + 1):
             Wl = self.__weights['W' + str(l)]

@@ -6,7 +6,9 @@ import numpy as np
 
 
 class Neuron:
-    """Neuron for binary classification with private attributes, forward propagation, cost, and evaluate"""
+    """Neuron for binary classification with private attributes,
+    forward propagation, cost, and evaluate
+    """
     def __init__(self, nx):
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
@@ -29,6 +31,12 @@ class Neuron:
         return self.__A
 
     def forward_prop(self, X):
+        """Calculates the forward propagation of the neuron
+        Args:
+            X (np.ndarray): Input data of shape (nx, m)
+        Returns:
+            np.ndarray: Activated output (self.__A)
+        """
         Z = np.matmul(self.__W, X) + self.__b
         self.__A = 1 / (1 + np.exp(-Z))
         return self.__A
