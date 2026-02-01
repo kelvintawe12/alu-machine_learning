@@ -3,7 +3,6 @@
 Builds, trains, and saves a neural network classifier in TensorFlow 1.x
 """
 import tensorflow as tf
-import numpy as np
 
 calculate_accuracy = __import__('3-calculate_accuracy').calculate_accuracy
 calculate_loss = __import__('4-calculate_loss').calculate_loss
